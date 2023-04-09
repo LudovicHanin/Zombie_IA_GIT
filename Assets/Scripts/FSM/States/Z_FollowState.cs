@@ -1,18 +1,31 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Z_FollowState : MonoBehaviour
+public class Z_FollowState : Z_State
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void InitState(Z_Brain brain)
     {
-        
-    }
+        base.InitState(brain);
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Z_ZombieBrain zombieBrain = (Z_ZombieBrain) _brain;
+        if (!_brain)
+        {
+            Debug.Log("No Brain");
+            return;
+        }
+
+        OnEnter += () =>
+        {
+            Debug.Log("Enter Follow");
+        };
+
+        OnUpdate += () =>
+        {
+            zombieBrain.FollowBehaviour.FollowTarget();
+        };
+
+        OnExit += () =>
+        {
+            Debug.Log("Exit Follow");
+        };
     }
 }

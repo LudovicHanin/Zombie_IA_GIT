@@ -10,7 +10,7 @@ public abstract class Z_State : StateMachineBehaviour
 
     protected Z_Brain _brain = null;
 
-    public virtual void InitBrain(Z_Brain brain)
+    public virtual void InitState(Z_Brain brain)
     {
         _brain = brain;
     }

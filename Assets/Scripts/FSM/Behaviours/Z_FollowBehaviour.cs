@@ -1,18 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Z_FollowBehaviour : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public UnityAction OnChange;
+    public void FollowTarget()
     {
+        Debug.Log("Follow Target");
         
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if(Input.GetKeyDown(KeyCode.A))
+            OnChange?.Invoke();
     }
 }

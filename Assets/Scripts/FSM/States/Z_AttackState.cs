@@ -1,18 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Z_AttackState : MonoBehaviour
+public class Z_AttackState : Z_State
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void InitState(Z_Brain brain)
     {
-        
-    }
+        base.InitState(brain);
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        OnEnter += () =>
+        {
+            Debug.Log("Enter Attack");
+        };
+
+        OnExit += () =>
+        {
+            Debug.Log("Exit Attack");
+        };
     }
 }
