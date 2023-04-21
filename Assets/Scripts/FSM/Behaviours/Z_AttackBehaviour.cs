@@ -1,18 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Z_AttackBehaviour : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private NavMeshAgent _agent; 
+    
+    public void Attack(IPlayer target)
     {
+        if (!_agent && TryGetComponent(out _agent))
+        {
+            return;
+        }
         
-    }
+        if(!_agent.isStopped) _agent.isStopped = true;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        StartCoroutine(target.PlayerHit());
     }
 }

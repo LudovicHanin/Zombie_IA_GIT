@@ -47,8 +47,9 @@ public class Z_ZombieBrain : Z_Brain
             {
                 _fsm.SetBool(inAttackRangeName, true);
                 inAttackRange = true;
+                _attackBehaviour.Attack(target);
             }
-            else if(inAttackRange)
+            else if(inAttackRange && distance > 2)
             {
                 _fsm.SetBool(inAttackRangeName, false);
                 inAttackRange = false;
